@@ -1,0 +1,30 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "mocha": true,
+    "protractor": true
+  },
+  "globals": {
+    "expect": true
+  },
+  "rules" : {
+    "indent": [2, 4, {"SwitchCase": 1}],
+    "prefer-const": 0,
+    "quote-props": 1,
+    "comma-dangle": [2, "never"],
+    "func-names": 0,
+    "max-len": [1, 100, 4, {"ignoreUrls": true, "ignoreComments": true}],
+    "no-console": 1,
+    "arrow-spacing": 1,
+    "no-unused-vars": 1,
+    "arrow-body-style": [1, "as-needed"],
+    "object-curly-spacing": [1, "never"],
+    "no-cond-assign": [2, "except-parens"],
+    "no-param-reassign": 1,
+
+    "keyword-spacing": 1,
+    "space-before-blocks": 1,
+    "space-before-function-paren": 1
+
+  }
+}
