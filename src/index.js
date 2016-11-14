@@ -1,10 +1,39 @@
+/* eslint-disable no-console */
 var converter = require('../lib/coordinate-converter.js');
 
-function geoCoordinateConverter(input){
+import MGRS from './mgrs.new.js';
+import UTM from './utm.new.js';
+
+var mgrs = new MGRS();
+var utm = new UTM();
+
+try {
+    // console.log(mgrs.toPoint('33UXP04'))
+    console.log(mgrs.toMGRS({ lat: 16.627382, lon: -32.668788 }))
+    // console.log(mgrs.toMGRS([16.41450040258237, 48.24949021548379], 2))
+    // console.log(mgrs.toBbox('33UXP04'))
+    console.log(utm.LLtoUTM({ lat: 48.627382, lon: -32.668788 }));
+
+} catch (e) {
+    console.log(e.message);
+}
+
+// fromUnknown(input : string) : GeoObject
+// fromMGRS(input : string) : GeoObject
+// fromUTM(input : string) : GeoObject
+// fromLatLon(lat : number, lon : number) : GeoObject
+
+// toMGRSBbox()
+// toPoint()
+// toMGRS()
+// toLatLon()
+// toUTM()
+
+function geoCoordinateConverter(input) {
     var output = {};
     var geo = converter.getGeodeticFromUnknown(input);
 
-    if(!geo){
+    if (!geo) {
         // handle error
         output = {
             geo: errorHandler(input),
@@ -24,7 +53,7 @@ function geoCoordinateConverter(input){
     return output;
 }
 
-function errorHandler(input){
+function errorHandler(input) {
     return 'Error: Could not convert input: ' + input;
 }
 

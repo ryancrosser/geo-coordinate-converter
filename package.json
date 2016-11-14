@@ -1,13 +1,35 @@
 {
-  "name": "geo-converter",
-  "version": "0.0.1",
-  "description": "",
-  "main": "src/index.js",
-  "dependencies": {},
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Ryan Crosser <Crosser_Ryan@bah.com>",
-  "license": "MIT"
+    "name": "geo-converter",
+    "version": "0.0.1",
+    "description": "",
+    "main": "src/index.js",
+    "dependencies": {},
+    "devDependencies": {
+        "babel-cli": "6.16.0",
+        "babel-core": "6.17.0",
+        "babel-loader": "6.2.5",
+        "babel-preset-latest": "6.16.0",
+        "babel-register": "6.16.3",
+        "chai": "3.5.0",
+        "eslint": "3.8.1",
+        "eslint-plugin-import": "2.0.1",
+        "eslint-watch": "2.1.14",
+        "mocha": "3.1.2",
+        "npm-run-all": "3.1.1",
+        "nsp": "2.6.2",
+        "rimraf": "2.5.4"
+    },
+    "scripts": {
+        "dev": "nodemon src/index.js --exec babel-node --presets es2015",
+        "prestart": "babel-node config/startMessage.js",
+        "start": "npm-run-all --parallel security-check lint:watch test:watch",
+        "lint": "esw src config --color",
+        "lint:watch": "npm run lint -- --watch",
+        "security-check": "nsp check",
+        "test": "mocha --reporter progress config/test-setup.js \"src/**/*.spec.js\"",
+        "test:watch": "npm run test -- --watch",
+        "clean-dist": "rimraf ./dist && mkdir dist"
+    },
+    "author": "Ryan Crosser <Crosser_Ryan@bah.com>",
+    "license": "MIT"
 }
